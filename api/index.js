@@ -39,8 +39,9 @@ app.post('/api/notifications', async (req, res) => {
     savedAt: new Date(),
   });
 
-  res.json({ success: true, id: result.insertedId });
+  res.status(201).json({ success: true, id: result.insertedId });
 });
+
 
 app.get('/api/notifications', async (req, res) => {
   await connectMongoDB();
