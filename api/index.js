@@ -21,6 +21,11 @@ async function connectMongoDB() {
   notificationsCollection = db.collection(COLLECTION_NAME);
 }
 
+app.get('/api/health', (req, res) => {
+  res.json({ success: true, message: "Server is running" });
+});
+
+
 app.post('/api/notifications', async (req, res) => {
   await connectMongoDB();
   const { title, text, package: pkg, timestamp, formattedTime } = req.body;
